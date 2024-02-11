@@ -16,6 +16,7 @@ export type RootStackParams = {
 const Stack = createStackNavigator<RootStackParams>();
 
 export const StackNavigator = () => {
+  
   return (
     <Stack.Navigator
       // initialRouteName='Pagina2Screen'
@@ -29,10 +30,10 @@ export const StackNavigator = () => {
         }
       }}
     >
-      <Stack.Screen name="Pagina1Screen" options={{ title: "Página 1" }} component={ Pagina1Screen } />
-      <Stack.Screen name="Pagina2Screen" options={{ title: "Página 2" }} component={ Pagina2Screen } />
-      <Stack.Screen name="Pagina3Screen" options={{ title: "Página 3" }} component={ Pagina3Screen } />
-      <Stack.Screen name="PersonaScreen" options={{ title: "Persona" }} component={ PersonaScreen } />
+      <Stack.Screen name="Pagina1Screen" options={{ title: "Página 1", headerShown: false, }} component={ Pagina1Screen } />
+      <Stack.Screen name="Pagina2Screen" options={{ title: "Página 2", headerShown: false, }} component={ Pagina2Screen } />
+      <Stack.Screen name="Pagina3Screen" options={{ title: "Página 3", headerShown: false, }} component={ Pagina3Screen } />
+      <Stack.Screen name="PersonaScreen" options={{ title: "Persona", headerShown: false, }} component={ PersonaScreen } />
     </Stack.Navigator>
   );
 }
