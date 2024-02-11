@@ -2,8 +2,9 @@ import React from 'react';
 
 import { DrawerContentComponentProps, createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { SettingsScreen } from '../screens/SettingsScreen';
+import Icon from "react-native-vector-icons/Ionicons";
 import { useWindowDimensions, View, Image, TouchableOpacity, Text } from 'react-native';
-import { styles } from '../themes/app.theme';
+import { colores, styles } from '../themes/app.theme';
 import { Tabs } from './Tabs';
 
 const Drawer = createDrawerNavigator();
@@ -48,15 +49,29 @@ const MenuInterno = ( { navigation }: DrawerContentComponentProps ) => {
       <View style={ styles.menuContainer } >
         <TouchableOpacity 
           onPress={ () => navigation.navigate('Tabs') }
-          style={ styles.menuBoton } 
+          style={{
+            ...styles.menuBoton,
+            flexDirection: 'row',
+            gap: 5,
+            justifyContent: 'flex-start',
+            alignItems: 'center'
+          }} 
         >
+          <Icon name="paper-plane-outline" size={20} color={colores.primary} />
           <Text style={ styles.menuTexto } >Navegación</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
           onPress={ () => navigation.navigate('SettingsScreen') }
-          style={ styles.menuBoton } 
+          style={{
+            ...styles.menuBoton,
+            flexDirection: 'row',
+            gap: 5,
+            justifyContent: 'flex-start',
+            alignItems: 'center'
+          }} 
         >
+          <Icon name="settings-outline" size={20} color={colores.primary} />
           <Text style={ styles.menuTexto } >Ajustes</Text>
         </TouchableOpacity>
       </View>
