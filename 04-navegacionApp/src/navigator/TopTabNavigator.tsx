@@ -35,15 +35,15 @@ export const TopTabNavigator = () => {
         tabBarIcon: ({ color, focused }) => {
           let iconName: string;
           switch ( route.name ) {
-            case 'ChatScreen':
+            case 'Chat':
               iconName = 'chatbox-outline';
             break;
 
-            case 'ContactsScreen':
+            case 'Contacts':
               iconName = 'people-outline';
             break;
 
-            case 'AlbumsScreen':
+            case 'Albums':
               iconName = 'albums-outline';
             break;
           }
@@ -56,9 +56,9 @@ export const TopTabNavigator = () => {
         }
       })}
     >
-      <Tab.Screen name="ChatScreen" component={ ChatScreen } />
-      <Tab.Screen name="ContactsScreen" component={ ContactsScreen } />
-      <Tab.Screen name="AlbumsScreen" component={ AlbumsScreen } />
+      <Tab.Screen name="Chat" component={ ChatScreen } />
+      <Tab.Screen name="Contacts" component={ ContactsScreen } />
+      <Tab.Screen name="Albums" component={ AlbumsScreen } />
     </Tab.Navigator>
   );
 }
