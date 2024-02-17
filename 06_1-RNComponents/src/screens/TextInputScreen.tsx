@@ -53,9 +53,7 @@ export const TextInputScreen = () => {
     </View>
   )
 }
-//asda
-asdas
-//estilos
+
 const stylesScreen = StyleSheet.create({
   inputStyle: {
     borderWidth: 1,

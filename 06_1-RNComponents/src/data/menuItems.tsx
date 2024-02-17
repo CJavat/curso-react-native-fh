@@ -26,4 +26,9 @@ export const menuItems: MenuItem[] = [
     icon: 'document-text-outline',
     component: 'TextInputScreen'
   },
+  {
+    name: 'Infiniti Scroll',
+    icon: 'download-outline',
+    component: 'InfinitiScrollScreen'
+  },
 ];
