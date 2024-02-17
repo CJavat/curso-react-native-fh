@@ -1,9 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { Animated, Dimensions, Image, ImageSourcePropType, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import Carousel, { Pagination } from 'react-native-snap-carousel';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useAnimation } from '../hooks/useAnimation';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 const { height: screenHeight, width: screenWidth } = Dimensions.get('window');
 
@@ -32,7 +33,8 @@ const items: Slide[] = [
 ]
 
 export const SlidesScreen = () => {
-
+  const { theme: { colors } } = useContext( ThemeContext );
+  //todo:
   const [activeIndex, setActiveIndex] = useState(0);
   const isVisible = useRef(false);
   const { opacity, fadeIn } = useAnimation();
@@ -43,7 +45,7 @@ export const SlidesScreen = () => {
     return (
       <View style={{
         flex: 1,
-        backgroundColor: 'white',
+        backgroundColor: colors.background,
         borderRadius: 5,
         padding: 40,
         justifyContent: 'center',
@@ -57,8 +59,8 @@ export const SlidesScreen = () => {
           }}
         />
 
-        <Text style={ styles.title }>{ item.title  }</Text>
-        <Text style={ styles.subtitle }>{ item.desc  }</Text>
+        <Text style={{ ...styles.title, color: colors.text }}>{ item.title  }</Text>
+        <Text style={{ ...styles.subtitle, color: colors.text }}>{ item.desc  }</Text>
       </View>
     );
   };
@@ -100,7 +102,7 @@ export const SlidesScreen = () => {
             width: 10,
             height: 10,
             borderRadius: 10,
-            backgroundColor: '#5856D6',
+            backgroundColor: colors.primary,
           }}
           // dotColor='red'
         />
@@ -113,7 +115,7 @@ export const SlidesScreen = () => {
           <TouchableOpacity
             style={{
               flexDirection: 'row',
-              backgroundColor: '#5856D6',
+              backgroundColor: colors.primary,
               width: 140,
               height: 50,
               borderRadius: 10,
@@ -140,7 +142,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#5856D6',
   },
   subtitle: {
     fontSize: 16,

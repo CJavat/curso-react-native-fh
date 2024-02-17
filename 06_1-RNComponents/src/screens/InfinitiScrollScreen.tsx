@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { ActivityIndicator, FlatList, Image, StyleSheet, Text, View } from 'react-native'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { FadeInImage } from '../components/FadeInImage';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 export const InfinitiScrollScreen = () => {
 
   const [numbers, setNumbers] = useState([1,2,3,4,5]);
+  const { theme: { colors } } = useContext( ThemeContext );
 
   const lowMore = () => {
     const newArray: number[] = [];
@@ -34,7 +36,7 @@ export const InfinitiScrollScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'red' }}>
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
       {/* <HeaderTitle title='InfinitiScrollScreen' /> */}
 
       <FlatList 
@@ -65,7 +67,6 @@ export const InfinitiScrollScreen = () => {
 
 const styles = StyleSheet.create({
     textItem: {
-      backgroundColor: 'green',
       height: 200,
     }
 });

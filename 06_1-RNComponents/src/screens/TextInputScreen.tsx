@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { StyleSheet, TextInput, View } from 'react-native'
 import { HeaderTitle } from '../components/HeaderTitle'
 import { styles } from '../theme/appTheme'
+import { ThemeContext } from '../context/themeContext/ThemeContext'
 
 export const TextInputScreen = () => {
+  const { theme: { colors, dividerColor } } = useContext( ThemeContext );
 
   const [form, setform] = useState({
     name: '',
@@ -23,30 +25,30 @@ export const TextInputScreen = () => {
       <HeaderTitle title='TextInputScreen' />
 
       <TextInput 
-        style={ stylesScreen.inputStyle }
+        style={{ ...stylesScreen.inputStyle, color: colors.text, borderColor: colors.border }}
         placeholder='Ingrese su nombre'
         autoCorrect={ false }
         autoCapitalize='words'
         onChangeText={ ( value ) => onChange( value, 'name' ) }
-        // value={ text }
+        placeholderTextColor={ dividerColor }
       />
 
       <TextInput 
-        style={ stylesScreen.inputStyle }
+        style={{ ...stylesScreen.inputStyle, color: colors.text, borderColor: colors.border }}
         placeholder='Ingrese su email'
         autoCorrect={ false }
         autoCapitalize='none'
         keyboardType='email-address'
         onChangeText={ ( value ) => onChange( value, 'email' ) }
-        // value={ text }
+        placeholderTextColor={ dividerColor }
       />
 
       <TextInput 
-        style={ stylesScreen.inputStyle }
+        style={{ ...stylesScreen.inputStyle, color: colors.text, borderColor: colors.border }}
         placeholder='Ingrese su teléfono'
         keyboardType='phone-pad'
         onChangeText={ ( value ) => onChange( value, 'phone' ) }
-        // value={ text }
+        placeholderTextColor={ dividerColor }
       />
 
       <HeaderTitle title={ JSON.stringify( form, null, 3)} />
@@ -57,7 +59,6 @@ export const TextInputScreen = () => {
 const stylesScreen = StyleSheet.create({
   inputStyle: {
     borderWidth: 1,
-    borderColor: 'rgba( 0,  0,  0, 0.3 )',
     height: 50,
     paddingHorizontal: 10,
     borderRadius: 10,
