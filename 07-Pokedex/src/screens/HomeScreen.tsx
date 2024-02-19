@@ -30,7 +30,8 @@ export const HomeScreen = () => {
             <Text 
               style={{ 
                 ...styles.title, 
-                ...styles.globalMargin, 
+                ...styles.globalMargin,
+                color: 'black',
                 top: top + 20,
                 marginBottom: top + 20,
                 paddingBottom: 10,

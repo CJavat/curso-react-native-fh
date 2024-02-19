@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Dimensions, Image, Platform, StyleSheet, Text, View } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import { SimplePokemon } from '../interfaces/pokemonInterfaces'
-import { TouchableOpacity } from 'react-native-gesture-handler';
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FadeInImage } from './FadeInImage';
 import ImageColors from 'react-native-image-colors';
 import { useNavigation } from '@react-navigation/native';
@@ -82,8 +82,7 @@ export const PokemonCard = ( { pokemon }: Props ) => {
 const styles = StyleSheet.create({
   cardContainer: {
     marginHorizontal: 10,
-    // backgroundColor: 'grey',
-    height: 120,
+    height: 150,
     width: 160,
     marginBottom: 25,
     borderRadius: 10,
