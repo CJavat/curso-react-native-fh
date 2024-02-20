@@ -10,7 +10,7 @@ export const PermissionsScreen = () => {
 
   return (
     <View style={ styles.container }>
-      <Text>Es necesario activar la ubicación para usar ésta aplicación</Text>
+      <Text style={ styles.title }>Es necesario activar la ubicación para usar ésta aplicación</Text>
 
       <BlackButton 
         title='Permiso'
@@ -29,5 +29,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    gap: 10,
+  },
+  title: {
+    color: 'black',
+    width: 150,
+    fontSize: 16,
   }
 });
