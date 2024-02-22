@@ -1,15 +1,18 @@
-import React from 'react'
-import { Background } from '../components/Background'
-import { Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import { WhiteLogo } from '../components/WhiteLogo'
-import { loginStyles } from '../theme/loginTheme'
-import { useForm } from '../hooks/useForm'
+import React, { useContext, useEffect } from 'react'
 import { StackScreenProps } from '@react-navigation/stack'
+import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { WhiteLogo } from '../components/WhiteLogo'
+import { Background } from '../components/Background'
+import { AuthContext } from '../context/AuthContext'
+import { useForm } from '../hooks/useForm'
+import { loginStyles } from '../theme/loginTheme'
 
 
 interface Props extends StackScreenProps<any, any> {}
 
 export const LoginScreen = ( { navigation, route }: Props ) => {
+
+  const { signIn, errorMessage, removeError } = useContext( AuthContext );
 
   const { email, onChange, password } = useForm({
     email: '',
@@ -19,8 +22,18 @@ export const LoginScreen = ( { navigation, route }: Props ) => {
   const onLogin = () => {
     Keyboard.dismiss();
     
-    console.log({ email, password });
+    signIn({ correo: email, password });
   };
+
+  useEffect(() => {
+    if( errorMessage.length === 0 ) return;
+    
+    Alert.alert( 'Login Incorrecto', errorMessage, [{
+      text: 'Ok',
+      onPress: removeError
+    }]);
+  }, [ errorMessage ]);
+  
 
   return (
     <>

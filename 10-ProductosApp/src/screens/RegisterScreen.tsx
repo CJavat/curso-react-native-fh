@@ -1,13 +1,16 @@
-import React from 'react'
-import { Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useContext, useEffect } from 'react'
+import { Alert, Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { loginStyles } from '../theme/loginTheme'
 import { WhiteLogo } from '../components/WhiteLogo'
 import { useForm } from '../hooks/useForm'
 import { StackScreenProps } from '@react-navigation/stack'
+import { AuthContext } from '../context/AuthContext'
 
 interface Props extends StackScreenProps<any, any>{}
 
 export const RegisterScreen = ( { navigation }:Props ) => {
+  const { signUp, errorMessage, removeError } = useContext( AuthContext );
+
   const { email, password, name, onChange } = useForm({
     name: '',
     email: '',
@@ -17,8 +20,18 @@ export const RegisterScreen = ( { navigation }:Props ) => {
   const onRegister = () => {
     Keyboard.dismiss();
     
-    console.log({ email, name, password });
+    signUp({ nombre: name, correo: email, password });
   };
+
+  useEffect(() => {
+    if( errorMessage.length === 0 ) return;
+    
+    Alert.alert( 'Registro Incorrecto', errorMessage, [{
+      text: 'Ok',
+      onPress: removeError
+    }]);
+  }, [ errorMessage ]);
+
 
   return (
     <>
@@ -44,8 +57,8 @@ export const RegisterScreen = ( { navigation }:Props ) => {
             ]}
             selectionColor="gray"
 
-            onChangeText={ ( value ) => onChange( value, 'email' ) }
-            value={ email }
+            onChangeText={ ( value ) => onChange( value, 'name' ) }
+            value={ name }
             onSubmitEditing={ onRegister }
 
             autoCapitalize='words'
@@ -96,7 +109,7 @@ export const RegisterScreen = ( { navigation }:Props ) => {
               style={ loginStyles.button }
               onPress={ onRegister }
             >
-              <Text style={ loginStyles.buttonText}>Login</Text>
+              <Text style={ loginStyles.buttonText}>Registrar</Text>
             </TouchableOpacity>
           </View>
 
@@ -106,7 +119,7 @@ export const RegisterScreen = ( { navigation }:Props ) => {
                 onPress={ () => navigation.replace("LoginScreen") }
                 style={ loginStyles.buttonReturn }
               >
-                <Text style={ loginStyles.buttonText }>Ingresar</Text>
+                <Text style={ loginStyles.buttonText }>Login</Text>
               </TouchableOpacity>
 
           </View>
