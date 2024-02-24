@@ -15,7 +15,7 @@ export const ProductsNavigator = () => {
   return (
     <Stack.Navigator
       screenOptions={{
-        headerShown: false,
+        // headerShown: false,
         cardStyle: {
           backgroundColor: '#FFF',
         },

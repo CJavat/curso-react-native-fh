@@ -10,11 +10,11 @@ export interface RegisterData {
 }
 
 export interface LoginResponse {
-  usuario: Usuario;
+  usuario: CreadoPor;
   token:   string;
 }
 
-export interface Usuario {
+export interface CreadoPor {
   rol:    string;
   estado: boolean;
   google: boolean;
@@ -38,8 +38,16 @@ export interface Producto {
   usuario:   Categoria;
   img:       string;
 }
-
+export interface CategoriesResponse {
+  total:      number;
+  categorias: Categoria[];
+}
 export interface Categoria {
+  _id:     string;
+  nombre:  string;
+  usuario?: CreadoPor;
+}
+export interface CreadoPor {
   _id:    string;
   nombre: string;
 }
