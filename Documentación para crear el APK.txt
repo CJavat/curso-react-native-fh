@@ -1,0 +1,18 @@
+Tal como aparecia el comando para generar el AAB y el APK en el momento en que grabo Fernanndo este video y tal como aparece ahora(noviembre/2023: npx react-native build-android --mode=release) se genera el APK pero no se puede utilizar porque necesita el metro.
+
+Mientras el profe Fernando actualiza el curso, aquí el comando que busque y que actualmente uso para generar el APK y probarlo efectivamente en cualquier android:
+
+cd android ./gradlew assembleRelease
+
+Luego buscan en la ruta: /Users/Usuario/Tu-Archivo/android/app/build/outputs/apk/release
+
+Alli vas a encontrar el archivo: app-release.apk
+
+Ese si lo puedes instalar en cualquier dispositivo android sin ningún problema
+
+
+Crear icono: https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.type=clipart&foreground.clipart=android&foreground.space.trim=1&foreground.space.pad=0.25&foreColor=rgba(96%2C%20125%2C%20139%2C%200)&backColor=rgb(68%2C%20138%2C%20255)&crop=0&backgroundShape=square&effects=none&name=ic_launcher
+
+
+Guía: https://reactnative.dev/docs/signed-apk-android#migrating-old-android-react-native-apps-to-use-app-signing-by-google-play
+

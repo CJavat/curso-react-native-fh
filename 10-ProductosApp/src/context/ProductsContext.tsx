@@ -82,14 +82,13 @@ export const ProductsProvider = ( { children }: any ) => {
       type: data.type,
       name: data.fileName
     }
-
-    console.log(fileToUpload);
-
     const formData = new FormData();
     formData.append('archivo', fileToUpload);
 
     try {
       const resp = await cafeApi.put(`/uploads/productos/${ id }`, formData);
+      //TODO: [AxiosError: Network Error]
+      console.log(resp);
     } catch (error) {
       console.log( error );
     }
